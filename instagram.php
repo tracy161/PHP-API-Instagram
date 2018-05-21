@@ -31,7 +31,7 @@ class Instagram {
 	public function getRecentMedia($user_id, $limit = 10)
 	{
 		
-			$data = $this->callAPI($this->endpoint . "users/$user_id/media/recent/?access_token=329489839.c89c3f1.37ea1e47b4484e95a07bbef4ba8b8a8c&count=$limit");
+			$data = $this->callAPI($this->endpoint . "users/$user_id/media/recent/?access_token=329489839.c89c3f1.37ea1e47b4484e95a07bbef4ba8b8a8c&count=$limit&");
 			$json = json_decode($data);
 			if($json->meta->code != 200){
 				var_dump($json);
