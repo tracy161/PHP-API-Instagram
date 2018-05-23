@@ -28,18 +28,32 @@ class Instagram {
 		return $data;
 	}
 
-	public function getRecentMedia($user_id, $limit = 10)
+	public function getRecentMedia($user_id, $limit = 30)
 	{
 		
-			$data = $this->callAPI($this->endpoint . "users/$user_id/media/recent/?access_token=329489839.c89c3f1.37ea1e47b4484e95a07bbef4ba8b8a8c&count=$limit&");
-			$json = json_decode($data);
+		$data = $this->callAPI($this->endpoint . "users/$user_id/media/recent/?access_token=329489839.c89c3f1.37ea1e47b4484e95a07bbef4ba8b8a8c&count=$limit&");
+
+		$json = json_decode($data);
 			if($json->meta->code != 200){
 				var_dump($json);
 				die();
 				throw new Exception($json->meta->error_message, $json->meta->code);
 				
 			}
-			return $json->data;
+		return $json->data;
 	
-}
+	}
+	public function getRecentInfo($user_id)
+	{
+		$data1 = $this->callAPI($this->endpoint . "users/$user_id/?access_token=329489839.c89c3f1.37ea1e47b4484e95a07bbef4ba8b8a8c");
+
+		$json = json_decode($data1);
+			if($json->meta->code = !200){
+				var_dump($json);
+				die();
+				throw new Exception($json->meta->error_message, $json->meta->code);
+				
+			}
+		return $json->data;
+	}
 } 
