@@ -13,15 +13,15 @@ $instagram = new Instagram();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="images/icon.png">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>My new Instagram</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
   </head>
   <body>
 
@@ -61,32 +61,32 @@ $instagram = new Instagram();
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <img class="first-slide" src="images/instagram.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <h1>Welcome to my Instagram.</h1>
+                <p>This is a portfolio that are conquering Instagram with PHP and the Instagram API.</p>
+                <p><a class="btn btn-lg btn-primary" href="https://www.instagram.com/trammieee/" role="button">Read more</a></p>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+            <img class="second-slide" src="images/instagram2.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
                 <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                <p>Instagram’s API allows us to interact with data such as user info, media (photos and videos), likes, comments, and tags..</p>
+                <p><a class="btn btn-lg btn-primary" href="https://instagram.com/developer/endpoints/" role="button">Learn more</a></p>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+            <img class="third-slide" src="images/instagram3.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                <h1>Registering an Application.</h1>
+                <p>Needless to say, you need to have your own Instagram account in order to work with the Instagram API. Then, sign up as a developer.</p>
+                <p><a class="btn btn-lg btn-primary" href="https://instagram.com/developer/" role="button">Sign Up</a></p>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ $instagram = new Instagram();
       <!-- Marketing messaging and featurettes
       ================================================== -->
       <!-- Wrap the rest of the page in another container to center all the content. -->
-      <br><br>
+      
       <div class="container">
 
         
@@ -115,7 +115,7 @@ $instagram = new Instagram();
             <?php 
          
             $pic = $instagram->getRecentInfo(329489839);
-            echo "<img class='rounded-circle' src='{$pic->profile_picture}' width='140'>";
+            echo "<img class='rounded-circle' src='{$pic->profile_picture}' width='150'>";
             
             ?>
             <h2 class="my-4", align="center">
@@ -153,6 +153,7 @@ $instagram = new Instagram();
                    foreach($medias as $media){
 
                     echo "<img src='{$media->images->standard_resolution->url}' width='500'>";
+                    //echo "$media->caption";
                      }
                    }
                 catch(Exception $e){
@@ -165,15 +166,16 @@ $instagram = new Instagram();
         <hr class="featurette-divider">
 
         <div class="row featurette">
-          <div class="col-md-7 ">
+          <div class="col-md-12 ">
             <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
             <p class="lead">bla bla bla</p>
           </div>
-          <div class="col-md-5 order-md-1">
+          <div class="col-md-12", align="center">
             <?php 
                 try {
-                   $medias = $instagram->getRecentMedia(329489839, 1);
+                   $medias = $instagram->getRecentMedia(329489839, 20);
                    foreach($medias as $media){
+                    echo "<h2 class='featurette-heading'>Oh yeah, it's that good.</h2>";
                     echo "<img src='{$media->images->standard_resolution->url}' width='500'>";
                      }
                    }
@@ -191,6 +193,166 @@ $instagram = new Instagram();
         <hr class="featurette-divider">
 
         <!-- /END THE FEATURETTES -->
+
+
+
+        <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                
+                <div class="card-body">
+                  <?php 
+                try {
+                   $medias = $instagram->getRecentMedia(329489839, 1);
+                   foreach($medias as $media){
+
+                    echo "<img src='{$media->images->standard_resolution->url}' width='300'>";
+                    
+                     }
+                   }
+                catch(Exception $e){
+                  die($e->getMessage());
+               } 
+                  ?>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       </div><!-- /.container -->
 
@@ -213,68 +375,3 @@ $instagram = new Instagram();
     <script src="js/vendor/holder.min.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-<!--!DOCTYPE html>
-<html>
-<head>
-	<title>My new Instagram page</title>
-
-</head>
-<body>
-	<div class="container">
-
-      <h1 class="my-4", align="center"> Welcome to My Instagram</h1>
-      <div class="card h-100", align="center">
-        <?php 
-         
-            $pic = $instagram->getRecentInfo(329489839);
-            echo "<img src='{$pic->profile_picture}' width='100'>";
-        ?>
-
-      </div>
-      <h2 class="my-4", align="center">Username:
-         <?php 
-         
-          $info = $instagram->getRecentInfo(329489839);
-          echo "$info->username";
-
-         ?></h2>
-      <h3 class="my-4", align="center">
-         <?php 
-         
-          $info = $instagram->getRecentInfo(329489839);
-          echo "$info->bio";
-
-         ?></h3>
-      <div class="row">
-        
-        
-        </div>
-          <div class="card h-100", align="center">
-          	<?php 
-    				    try {
-      					   $medias = $instagram->getRecentMedia(329489839);
-      					   foreach($medias as $media){
-      						  echo "<img src='{$media->images->standard_resolution->url}' width='500'>";
-      					     }
-      					   }
-      					catch(Exception $e){
-      						die($e->getMessage());
-    					 } 
-			   ?>
-
-          </div>
-      </div>
-  </div>
-</div>
-
-</body>
-
-</html-->
-
